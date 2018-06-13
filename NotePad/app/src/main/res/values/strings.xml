@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Simple NotePad</string>
+    <string name="action_settings">Settings</string>
+    <string name="title">Title</string>
+    <string name="subject">Subject</string>
+    <string name="Ok">Save</string>
+    <string name="save">Note is Saving.</string>
+    <string name="update">Edited</string>
+    <string name="menu_update">Edit.</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu">Menu</string>
+</resources>

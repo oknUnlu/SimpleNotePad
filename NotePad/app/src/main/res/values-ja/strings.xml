@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">シンプルなノートパッド</string>
+    <string name="action_settings">設定</string>
+    <string name="title">タイトル</string>
+    <string name="subject">件名</string>
+    <string name="Ok">セーブ</string>
+    <string name="save">メモは保存しています.</string>
+    <string name="update">編集済み</string>
+    <string name="menu_update">編集.</string>
+    <string name="menu_delete">削除</string>
+    <string name="menu">メニュー</string>
+</resources>

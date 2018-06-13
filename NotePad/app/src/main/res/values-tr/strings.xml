@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Basit Not Defteri</string>
+    <string name="action_settings">Ayarlar</string>
+    <string name="title">Başlık</string>
+    <string name="subject">Konu</string>
+    <string name="Ok">Kaydet</string>
+    <string name="save">Notunuz Kaydedildi.</string>
+    <string name="update">Düzenlendi</string>
+    <string name="menu_update">Düzenle</string>
+    <string name="menu_delete">Sil</string>
+    <string name="menu">Menü</string>
+</resources>

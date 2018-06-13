@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Простой блокнот</string>
+    <string name="action_settings">настройки</string>
+    <string name="title">заглавие</string>
+    <string name="subject">предмет</string>
+    <string name="Ok">спасти</string>
+    <string name="save">Примечание Сохранение.</string>
+    <string name="update">отредактированный</string>
+    <string name="menu_update">редактировать.</string>
+    <string name="menu_delete">Удалить</string>
+    <string name="menu">Меню</string>
+</resources>

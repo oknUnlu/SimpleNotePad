@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Blocco note semplice</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="title">Titolo</string>
+    <string name="subject">Soggetto</string>
+    <string name="Ok">Salvare</string>
+    <string name="save">Nota è il salvataggio.</string>
+    <string name="update">Modificato</string>
+    <string name="menu_update">Modificare.</string>
+    <string name="menu_delete">Elimina</string>
+    <string name="menu">Menu</string>
+</resources>
