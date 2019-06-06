@@ -1,24 +1,32 @@
 package com.okanunlu.notepad;
 
-import android.app.Activity;
+import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
+import android.support.v7.app.AppCompatActivity;
+import android.widget.RelativeLayout;
 
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
+import com.google.android.gms.common.api.Releasable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class NoteActivity extends Activity {
+public class NoteActivity extends AppCompatActivity{
+
+    final Context context = this;
 
     public static Intent intent;
 
@@ -27,6 +35,8 @@ public class NoteActivity extends Activity {
     private NotesAdapter mAdapter;
     private ListView mListView;
     private List<Note> mNoteList;
+    private RelativeLayout mrl_data;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +44,7 @@ public class NoteActivity extends Activity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_note);
 
+        mrl_data = (RelativeLayout) findViewById(R.id.activity_data_id);
         mListView = (ListView) findViewById(R.id.note_list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -106,8 +117,29 @@ public class NoteActivity extends Activity {
                 return false;
             }
         });
-    }
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                try {
+                    intent = new Intent(NoteActivity.this, SettingActivity.class);
+                    startActivity(intent);
+                }catch (Exception e){
+                    //null
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     public static List<Note> SelectNoteList() {
         return new Select()

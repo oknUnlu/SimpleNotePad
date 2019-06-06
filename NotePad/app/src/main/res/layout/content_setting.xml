@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".SettingActivity"
+    tools:showIn="@layout/activity_setting"
+    android:id="@+id/rlZemin"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kırmızı"
+            android:id="@+id/txtRed" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbRed"
+            android:indeterminate="false"
+            android:max="255"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yeşil"
+            android:id="@+id/txtGreen" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbGreen"
+            android:indeterminate="false"
+            android:max="255"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mavi"
+            android:id="@+id/txtBlue" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sbBlue"
+            android:indeterminate="false"
+            android:max="255"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+        <Button
+            android:id="@+id/btnRenkDegis"
+            android:onClick="btnRenkDegisClick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
+            android:text="Otomatik Renk Değiştir"
+            android:textSize="16sp"
+            android:textCursorDrawable="@drawable/cursor_color"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.okanunlu.notepad">
+    package="com.okanunlu.notepad">
 
     <application
-        android:name="com.okanunlu.notepad.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
-        android:screenOrientation="userPortrait"
         android:icon="@drawable/notes"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="userPortrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".SettingActivity"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <meta-data
             android:name="AA_DB_NAME"
             android:value="Note.db" />
@@ -19,22 +24,18 @@
             android:value="5" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="com.okanunlu.notepad.Note"
-            />
-
+            android:value="com.okanunlu.notepad.Note" />
 
         <activity
             android:name=".NoteActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DataActivity">
-        </activity>
+        <activity android:name=".DataActivity"></activity>
     </application>
 
 </manifest>
