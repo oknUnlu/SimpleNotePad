@@ -2,8 +2,10 @@ package com.okanunlu.notepad;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.List;
@@ -21,7 +23,10 @@ public class DataActivity extends Activity {
     private List<Note> mNoteList;
     private NoteActivity mNoteActivity = new NoteActivity();
 
-
+    private RelativeLayout mrl_data;
+    private int mRed;
+    private int mGreen;
+    private int mBlue;
 
     @BindView(R.id.titleEditText)
     EditText mTitleEditText;
@@ -34,21 +39,25 @@ public class DataActivity extends Activity {
         i.putExtra(SEND_MESSAGE_TITLE,mTitleEditText.getText().toString());
         i.putExtra(SEND_MESSAGE_SUBJECT,mSubjectEditText.getText().toString());
 
+        i.putExtra("red",mRed);
+        i.putExtra("green",mGreen);
+        i.putExtra("blue",mBlue);
 
         mNote = new Note();
         mNote.setTitle(mTitleEditText.getText().toString());
         mNote.setSubject(mSubjectEditText.getText().toString());
-
+        mNote.setRed(mRed);
+        mNote.setGreen(mGreen);
+        mNote.setBlue(mBlue);
         mNote.save();
 
         if (id != null){
             mNoteActivity.DeleteNoteList(id);
             Toast.makeText(this, R.string.update,Toast.LENGTH_SHORT).show();
         }
-
-        else
-            Toast.makeText(this, R.string.save,Toast.LENGTH_SHORT).show();
-
+        else {
+            Toast.makeText(this, R.string.save, Toast.LENGTH_SHORT).show();
+        }
         startActivity(i);
     }
 
@@ -59,6 +68,7 @@ public class DataActivity extends Activity {
         setContentView(R.layout.activity_data);
 
         ButterKnife.bind(this);
+        mrl_data = (RelativeLayout) findViewById(R.id.activity_data_id);
 
         Bundle extra = getIntent().getExtras();
         if (extra != null) {
@@ -67,7 +77,13 @@ public class DataActivity extends Activity {
             id = extra.getLong("TAG_ID");
             mTitleEditText.setText(title);
             mSubjectEditText.setText(subject);
-        }
 
+            mRed = extra.getInt("red");
+            mGreen = extra.getInt("green");
+            mBlue = extra.getInt("blue");
+            if (mRed != 0 || mGreen != 0 || mBlue != 0){
+                mrl_data.setBackgroundColor(Color.rgb(mRed, mGreen, mBlue));
+            }
+        }
     }
 }

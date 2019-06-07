@@ -7,7 +7,7 @@
     <string name="Ok">セーブ</string>
     <string name="save">メモは保存しています.</string>
     <string name="update">編集済み</string>
-    <string name="menu_update">編集.</string>
+    <string name="menu_update">編集</string>
     <string name="menu_delete">削除</string>
     <string name="menu">メニュー</string>
 </resources>

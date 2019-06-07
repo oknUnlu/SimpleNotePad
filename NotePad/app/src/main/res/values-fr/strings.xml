@@ -7,7 +7,7 @@
     <string name="Ok">Sauvegarder</string>
     <string name="save">Remarque est en cours d\'enregistrement.</string>
     <string name="update">Édité</string>
-    <string name="menu_update">Modifier.</string>
+    <string name="menu_update">Modifier</string>
     <string name="menu_delete">Effacer</string>
     <string name="menu">Menu</string>
 </resources>

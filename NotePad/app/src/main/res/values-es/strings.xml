@@ -7,7 +7,7 @@
     <string name="Ok">Salvar</string>
     <string name="save">Nota es el ahorro.</string>
     <string name="update">Editado</string>
-    <string name="menu_update">Editar.</string>
+    <string name="menu_update">Editar</string>
     <string name="menu_delete">Borrar</string>
     <string name="menu">Menú</string>
 </resources>

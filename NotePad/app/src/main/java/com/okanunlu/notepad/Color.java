@@ -4,15 +4,8 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-
-@Table(name="Note")
-public class Note extends Model {
-
-    @Column(name="mTitle")
-    private String mTitle;
-
-    @Column(name="mSubject")
-    private String mSubject;
+@Table(name="Color")
+public class Color extends Model {
 
     @Column(name="mRed")
     private int mRed;
@@ -23,32 +16,8 @@ public class Note extends Model {
     @Column(name="mBlue")
     private int mBlue;
 
-/*    public Note(int mRed, int mGreen,
-               int mBlue)
-    {
-        this.mRed = mRed;
-        this.mGreen = mGreen;
-        this.mBlue = mBlue;
-    }*/
-
-    public Note(){
+    public Color(){
         super();
-    }
-
-    public String getTitle() {
-        return mTitle;
-    }
-
-    public void setTitle(String title) {
-        mTitle = title;
-    }
-
-    public String getSubject() {
-        return mSubject;
-    }
-
-    public void setSubject(String subject) {
-        mSubject = subject;
     }
 
     public int getRed() {
@@ -74,5 +43,4 @@ public class Note extends Model {
     public void setBlue(int blue) {
         mBlue= blue;
     }
-
 }

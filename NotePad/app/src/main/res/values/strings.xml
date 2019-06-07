@@ -7,7 +7,7 @@
     <string name="Ok">Save</string>
     <string name="save">Note is Saving.</string>
     <string name="update">Edited</string>
-    <string name="menu_update">Edit.</string>
+    <string name="menu_update">Edit</string>
     <string name="menu_delete">Delete</string>
     <string name="menu">Menu</string>
     <string name="title_activity_setting">SettingActivity</string>

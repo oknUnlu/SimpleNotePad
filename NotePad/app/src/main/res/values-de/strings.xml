@@ -6,7 +6,7 @@
     <string name="Ok">sparen</string>
     <string name="save">Hinweis ist Speichern.</string>
     <string name="update">Bearbeitet</string>
-    <string name="menu_update">Bearbeiten.</string>
+    <string name="menu_update">Bearbeiten</string>
     <string name="menu_delete">Löschen</string>
     <string name="menu">Speisekarte</string>
 </resources>

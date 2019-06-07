@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.widget.RelativeLayout;
 
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
+import com.activeandroid.query.Update;
 import com.google.android.gms.common.api.Releasable;
 
 import java.util.ArrayList;
@@ -36,7 +38,9 @@ public class NoteActivity extends AppCompatActivity{
     private ListView mListView;
     private List<Note> mNoteList;
     private RelativeLayout mrl_data;
-
+    private int mRed;
+    private int mGreen;
+    private int mBlue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,19 @@ public class NoteActivity extends AppCompatActivity{
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_note);
 
-        mrl_data = (RelativeLayout) findViewById(R.id.activity_data_id);
+        // 07.06.2019 BEGIN
+        mrl_data = (RelativeLayout) findViewById(R.id.activity_note_id);
+        Bundle extra = getIntent().getExtras();
+        if (extra != null) {
+            mRed = extra.getInt("red");
+            mGreen = extra.getInt("green");
+            mBlue = extra.getInt("blue");
+            if (mRed != 0 || mGreen != 0 || mBlue != 0){
+                mrl_data.setBackgroundColor(Color.rgb(mRed, mGreen, mBlue));
+            }
+        }
+        // 07.06.2019 END
+
         mListView = (ListView) findViewById(R.id.note_list);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
@@ -52,6 +68,11 @@ public class NoteActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 intent = new Intent(NoteActivity.this, DataActivity.class);
+                // 07.06.2019 BEGIN
+                intent.putExtra("red",mRed);
+                intent.putExtra("green",mGreen);
+                intent.putExtra("blue",mBlue);
+                // 07.06.2019 END
                 startActivity(intent);
             }
         });
@@ -59,13 +80,16 @@ public class NoteActivity extends AppCompatActivity{
         mNoteArrayList = new ArrayList<>();
         mNote = new Note();
         mNoteList = SelectNoteList();
-
+        // 08.06.2019 BEGIN
+        // Tekrar kontrol edilecektir.
+        if (mNote.getRed() != 0 || mNote.getGreen() != 0 || mNote.getBlue() != 0) {
+            mrl_data.setBackgroundColor(Color.rgb(mNote.getRed(), mNote.getGreen(), mNote.getBlue()));
+        }
+        // 08.06.2019 END
         for (int i = 0; i < mNoteList.size(); i++) {
             mNote = mNoteList.get(i);
             mNoteArrayList.add(mNote);
-
         }
-
 
         mAdapter = new NotesAdapter(NoteActivity.this, mNoteArrayList);
         mListView.setAdapter(mAdapter);
