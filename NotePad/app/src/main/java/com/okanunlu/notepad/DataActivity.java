@@ -46,9 +46,6 @@ public class DataActivity extends Activity {
         mNote = new Note();
         mNote.setTitle(mTitleEditText.getText().toString());
         mNote.setSubject(mSubjectEditText.getText().toString());
-        mNote.setRed(mRed);
-        mNote.setGreen(mGreen);
-        mNote.setBlue(mBlue);
         mNote.save();
 
         if (id != null){

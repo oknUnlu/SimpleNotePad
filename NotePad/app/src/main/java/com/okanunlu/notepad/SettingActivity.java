@@ -8,10 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+
+import java.util.List;
 import java.util.Random;
 import android.graphics.Color;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.activeandroid.query.Delete;
 
 
 public class SettingActivity extends AppCompatActivity {
@@ -22,11 +26,11 @@ public class SettingActivity extends AppCompatActivity {
     private SeekBar sbRed,sbGreen,sbBlue;
     private FloatingActionButton fab_setting;
     private Button btn_cchange;
-    private Note mNote;
-    private Color mColor;
+    private Colors mColors;
     private int mRed;
     private int mGreen;
     private int mBlue;
+    private int mTemp = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,19 +49,35 @@ public class SettingActivity extends AppCompatActivity {
             sbGreen.setOnSeekBarChangeListener(new KaydirmaOlayTutucu());
             sbBlue.setOnSeekBarChangeListener(new KaydirmaOlayTutucu());
 
-/*            mNote = new Note();
-            mObject = rl_setting.getDrawingCacheBackgroundColor();
-            mNote.setColor(mObject);
-            mNote.save();*/
+            Bundle extra = getIntent().getExtras();
+            if (extra != null)
+                if (mTemp != 1){
+                    mRed = extra.getInt("red");
+                    sbRed.setProgress(mRed);
+                    mGreen = extra.getInt("green");
+                    sbGreen.setProgress(mGreen);
+                    mBlue = extra.getInt("blue");
+                    sbBlue.setProgress(mBlue);
+                    mTemp = 1;
+                }
+            else{
+                    mRed = extra.getInt("red");
+                    sbRed.setProgress(mRed);
+                    mGreen = extra.getInt("green");
+                    sbGreen.setProgress(mGreen);
+                    mBlue = extra.getInt("blue");
+                    sbBlue.setProgress(mBlue);
+                }
+
+            rl_setting.setBackgroundColor(Color.rgb(mRed, mGreen, mBlue));
 
             btn_cchange =(Button) findViewById(R.id.btnRenkDegis);
-
             btn_cchange.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int renk = RenkGetir();
-                    rl_setting.setBackgroundColor(renk);
-                    btn_cchange.setBackgroundColor(renk);
+                    int mRenk = RenkGetir();
+                    rl_setting.setBackgroundColor(mRenk);
+                    btn_cchange.setBackgroundColor(mRenk);
                 }
             });
 
@@ -75,11 +95,14 @@ public class SettingActivity extends AppCompatActivity {
                     intent.putExtra("green",mGreen);
                     intent.putExtra("blue",mBlue);
 
-                    mNote = new Note();
-                    mNote.setRed(mRed);
-                    mNote.setGreen(mGreen);
-                    mNote.setBlue(mBlue);
-                    mNote.save();
+                    mColors = new Colors();
+                    mColors.setRed(mRed);
+                    mColors.setGreen(mGreen);
+                    mColors.setBlue(mBlue);
+                    if (mRed != 0 || mGreen != 0 || mBlue != 0){
+                        DeleteColorList();
+                    }
+                    mColors.save();
 
                     startActivity(intent);
                 }
@@ -146,4 +169,10 @@ public class SettingActivity extends AppCompatActivity {
             }
         }
 
+        public static List<Colors> DeleteColorList() {
+            return new Delete()
+                    .from(Colors.class)
+                    .execute();
+
+        }
     }

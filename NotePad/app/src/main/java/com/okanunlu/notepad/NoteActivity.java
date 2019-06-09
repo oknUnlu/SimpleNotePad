@@ -1,7 +1,5 @@
 package com.okanunlu.notepad;
 
-import android.content.ClipData;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,25 +16,23 @@ import android.widget.ListView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 
+import com.activeandroid.Model;
 import com.activeandroid.query.Delete;
 import com.activeandroid.query.Select;
-import com.activeandroid.query.Update;
-import com.google.android.gms.common.api.Releasable;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class NoteActivity extends AppCompatActivity{
 
-    final Context context = this;
-
     public static Intent intent;
-
     private Note mNote;
+    private Colors mColors;
     private ArrayList<Note> mNoteArrayList;
+    private ArrayList<Colors> mColorArrayList;
     private NotesAdapter mAdapter;
     private ListView mListView;
     private List<Note> mNoteList;
+    private List<Colors> mColorList;
     private RelativeLayout mrl_data;
     private int mRed;
     private int mGreen;
@@ -80,12 +76,26 @@ public class NoteActivity extends AppCompatActivity{
         mNoteArrayList = new ArrayList<>();
         mNote = new Note();
         mNoteList = SelectNoteList();
+
         // 08.06.2019 BEGIN
-        // Tekrar kontrol edilecektir.
-        if (mNote.getRed() != 0 || mNote.getGreen() != 0 || mNote.getBlue() != 0) {
-            mrl_data.setBackgroundColor(Color.rgb(mNote.getRed(), mNote.getGreen(), mNote.getBlue()));
+        mColors = new Colors();
+        mColorList = SelectColorList();
+        if (mColorList != null){
+            mColors = mColorList.get(0);
+            /*for (int i = 0; i < mColorList.size(); i++){
+                mColors = mColorList.get(i);
+                //mColorArrayList.add(mColors);
+                if (mColors.getRed() != 0 || mColors.getGreen() != 0 || mColors.getBlue() != 0) {
+                    mrl_data.setBackgroundColor(Color.rgb(mColors.getRed(), mColors.getGreen(), mColors.getBlue()));
+                    break;
+                }
+            }*/
+            if (mColors.getRed() != 0 || mColors.getGreen() != 0 || mColors.getBlue() != 0) {
+                mrl_data.setBackgroundColor(Color.rgb(mColors.getRed(), mColors.getGreen(), mColors.getBlue()));
+            }
         }
         // 08.06.2019 END
+
         for (int i = 0; i < mNoteList.size(); i++) {
             mNote = mNoteList.get(i);
             mNoteArrayList.add(mNote);
@@ -155,6 +165,9 @@ public class NoteActivity extends AppCompatActivity{
             case R.id.action_settings:
                 try {
                     intent = new Intent(NoteActivity.this, SettingActivity.class);
+                    intent.putExtra("red",255);
+                    intent.putExtra("green",255);
+                    intent.putExtra("blue",255);
                     startActivity(intent);
                 }catch (Exception e){
                     //null
@@ -177,4 +190,11 @@ public class NoteActivity extends AppCompatActivity{
                 .where("Id = ?", id)
                 .execute();
     }
+
+    public static List<Colors> SelectColorList() {
+        return new Select()
+                .from(Colors.class)
+                .execute();
+    }
+
 }

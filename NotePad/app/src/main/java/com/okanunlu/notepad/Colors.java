@@ -4,8 +4,8 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-@Table(name="Color")
-public class Color extends Model {
+@Table(name="Colors")
+public class Colors extends Model {
 
     @Column(name="mRed")
     private int mRed;
@@ -16,10 +16,9 @@ public class Color extends Model {
     @Column(name="mBlue")
     private int mBlue;
 
-    public Color(){
+    public Colors(){
         super();
     }
-
     public int getRed() {
         return mRed;
     }
@@ -41,6 +40,7 @@ public class Color extends Model {
     }
 
     public void setBlue(int blue) {
-        mBlue= blue;
+        mBlue = blue;
     }
+
 }

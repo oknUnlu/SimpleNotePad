@@ -14,23 +14,6 @@ public class Note extends Model {
     @Column(name="mSubject")
     private String mSubject;
 
-    @Column(name="mRed")
-    private int mRed;
-
-    @Column(name="mGreen")
-    private int mGreen;
-
-    @Column(name="mBlue")
-    private int mBlue;
-
-/*    public Note(int mRed, int mGreen,
-               int mBlue)
-    {
-        this.mRed = mRed;
-        this.mGreen = mGreen;
-        this.mBlue = mBlue;
-    }*/
-
     public Note(){
         super();
     }
@@ -49,30 +32,6 @@ public class Note extends Model {
 
     public void setSubject(String subject) {
         mSubject = subject;
-    }
-
-    public int getRed() {
-        return mRed;
-    }
-
-    public void setRed(int red) {
-        mRed = red;
-    }
-
-    public int getGreen() {
-        return mGreen;
-    }
-
-    public void setGreen(int green) {
-        mGreen = green;
-    }
-
-    public int getBlue() {
-        return mBlue;
-    }
-
-    public void setBlue(int blue) {
-        mBlue= blue;
     }
 
 }
